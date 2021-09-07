@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "todos"
+version = "0.1.0"
+description = "Our little buggy TODOs backend, let's fix it with monitoring!"
+authors = ["Davide Pedranz <dp@bendingspoons.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+asyncpg = "^0.29.0"
+fastapi = "^0.104.1"
+prometheus-client = "^0.19.0"
+pydantic-settings = "^2.1.0"
+uvicorn = "^0.24.0.post1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.6"
+
+[tool.ruff.lint]
+ignore = ["F401"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

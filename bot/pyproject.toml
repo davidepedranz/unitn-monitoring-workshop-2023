@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "bot-new"
+version = "0.1.0"
+description = ""
+authors = ["Davide Pedranz <dp@bendingspoons.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+httpx = "^0.25.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.6"
+mypy = "^1.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
