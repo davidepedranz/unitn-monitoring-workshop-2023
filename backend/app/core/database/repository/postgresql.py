@@ -89,7 +89,6 @@ class PostgreSQLRepository(Repository):
             rows = await connection.fetch(self.SQL.LIST)
             return tuple(Todo.model_validate(dict(row)) for row in rows)
 
-    @random_delay(min_delay=0.5, max_delay=2.0)  # type: ignore
     async def insert(self, text: str) -> UUID:
         async with self._postgresql.acquire() as connection:
             raw = await connection.fetchval(self.SQL.INSERT, text, True)
@@ -105,7 +104,6 @@ class PostgreSQLRepository(Repository):
             raw_answer = await connection.execute(self.SQL.ACTIVATE, id_)
             return PostgreSQL.get_number_of_updated_rows(raw_answer) > 0
 
-    @rare_delay(delay=3.0, probability=0.1)  # type: ignore
     async def deactivate(self, id_: UUID) -> bool:
         async with self._postgresql.acquire() as connection:
             raw_answer = await connection.execute(self.SQL.DEACTIVATE, id_)
