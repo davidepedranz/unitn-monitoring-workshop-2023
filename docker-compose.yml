@@ -26,6 +26,16 @@ services:
       - 8000:80/tcp
     restart: unless-stopped
 
+  backend:
+    build:
+      context: ./backend
+    environment:
+      POSTGRESQL_CONNECTION_URL: postgres://postgres:password@postgres:5432/postgres
+    ports:
+      - 5000:5000/tcp
+      - 5001:5001/tcp
+    restart: unless-stopped
+
   postgres:
     image: postgres:16.1-alpine3.18
     environment:
